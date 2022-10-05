@@ -22,6 +22,6 @@ Route::get('/sobre', [SobreNosController::class, 'sobreNos']);
 
 Route::get('/contato', [ContatoController::class, 'contato']);
 
-Route::get('/contato/{nome}', function (string $nome) {
-    echo 'Parametro: ' . $nome;
+Route::get('/contato/{nome}/{mensagem?}', function (string $nome, string $mensagem = 'Mensagem ñ informada') {
+    echo 'Parametro: ' . $nome . ' - ' . $mensagem;
 });
