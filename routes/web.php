@@ -22,6 +22,12 @@ Route::get('/sobre', [SobreNosController::class, 'sobreNos']);
 
 Route::get('/contato', [ContatoController::class, 'contato']);
 
-Route::get('/contato/{nome}/{mensagem?}', function (string $nome, string $mensagem = 'Mensagem ñ informada') {
-    echo 'Parametro: ' . $nome . ' - ' . $mensagem;
-});
+Route::get(
+    '/contato/{nome}/{id}',
+    function (
+        string $nome,
+        int $id = 1
+    ) {
+        echo 'Parametro: ' . $nome . ' - ' . $id;
+    }
+)->where('id', '[0-9]+')->where('nome', '[A-Za-z]+');
