@@ -2,6 +2,10 @@
 
 @isset($fornecedores)
     @forelse ($fornecedores as $i => $fornecedor)
+        @if ($loop->first)
+            <h4>Total: {{ $loop->count }}</h4>
+            <br>
+        @endif
         Fornecedor: {{ $fornecedor['nome'] }}
         <br>
         Status: {{ $fornecedor['status'] }}
@@ -21,9 +25,11 @@
             @default
                 Estado não encontrado
         @endswitch
-        <hr>
+        @if (!$loop->last)
+            <hr>
+        @endif
         @empty
             Não existem fornecedores
-    @endforelse
+        @endforelse
 
-@endisset
+    @endisset
