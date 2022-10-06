@@ -1,18 +1,24 @@
 <h3>Fornecedores</h3>
 
-{{-- comentario --}}
-
-<?= 'teste <br>' ?>
-{{ 'teste 2' }}
-<br>
-@php
-echo 'teste 4';
-@endphp
-<br>
 @isset($fornecedores)
-    Fornecedor: {{ $fornecedores[1]['nome'] }}
-    <br>
-    Status: {{ $fornecedores[1]['status'] }}     
-    <br>
-    CNPJ: {{ $fornecedores[0]['cnpj'] ?? 'Não preenchido' }}
+    @for ($i = 0; isset($fornecedores[$i]); $i++)
+        Fornecedor: {{ $fornecedores[$i]['nome'] }}
+        <br>
+        Status: {{ $fornecedores[$i]['status'] }}     
+        <br>
+        CNPJ: {{ $fornecedores[$i]['cnpj'] ?? 'Não preenchido' }}
+        <br>
+        Estado: 
+        @switch($fornecedores[$i]['ddd'])
+            @case('83')
+                Paraíba 
+                @break
+            @case('81')
+                Pernambuco
+                @break
+            @default
+                Estado não encontrado
+        @endswitch
+        <hr>
+    @endfor
 @endisset
