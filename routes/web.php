@@ -47,3 +47,7 @@ Route::get('/rota1', function() {
 Route::get('/rota', function() {
     return 'rota2';
 })->name('site.rota2');
+
+Route::fallback(function() {
+    echo '404!!!';
+});
