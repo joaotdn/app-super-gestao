@@ -10,11 +10,9 @@ echo 'teste 4';
 @endphp
 <br>
 @isset($fornecedores)
-    Nome: {{ $fornecedores[0]['nome'] }}
-    @isset($fornecedores[0]['cnpj'])
-        CNPJ: {{ $fornecedores[0]['cnpj'] }}
-        @empty($fornecedores[0]['cnpj'])
-            - Sem cnpj
-        @endempty
-    @endisset
+    Fornecedor: {{ $fornecedores[1]['nome'] }}
+    <br>
+    Status: {{ $fornecedores[1]['status'] }}     
+    <br>
+    CNPJ: {{ $fornecedores[0]['cnpj'] ?? 'Não preenchido' }}
 @endisset
