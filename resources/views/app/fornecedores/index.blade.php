@@ -1,7 +1,7 @@
 <h3>Fornecedores</h3>
 
 @isset($fornecedores)
-    @foreach ($fornecedores as $i => $fornecedor)
+    @forelse ($fornecedores as $i => $fornecedor)
         Fornecedor: {{ $fornecedor['nome'] }}
         <br>
         Status: {{ $fornecedor['status'] }}
@@ -22,6 +22,8 @@
                 Estado não encontrado
         @endswitch
         <hr>
-    @endforeach
+        @empty
+            Não existem fornecedores
+    @endforelse
 
 @endisset
