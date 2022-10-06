@@ -9,9 +9,12 @@
 echo 'teste 4';
 @endphp
 <br>
-{{-- @dd($fornecedores) --}}
-Fornecedor: {{ $fornecedores[0]['nome'] }}
-@unless ($fornecedores[0]['status'] == 'S')
-    <br>Fornecedor inativo
-@endunless
-<br>
+@isset($fornecedores)
+    Nome: {{ $fornecedores[0]['nome'] }}
+    @isset($fornecedores[0]['cnpj'])
+        CNPJ: {{ $fornecedores[0]['cnpj'] }}
+        @empty($fornecedores[0]['cnpj'])
+            - Sem cnpj
+        @endempty
+    @endisset
+@endisset
