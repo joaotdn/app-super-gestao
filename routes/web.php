@@ -3,6 +3,7 @@
 use App\Http\Controllers\ContatoController;
 use App\Http\Controllers\PrincipalController;
 use App\Http\Controllers\SobreNosController;
+use App\Http\Controllers\TesteController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -40,13 +41,7 @@ Route::prefix('/app')->group(function() {
     Route::get('/produtos', function() { return 'Produtos'; });
 });
 
-Route::get('/rota1', function() {
-    return redirect()->route('site.rota2');
-})->name('site.rota1');
-
-Route::get('/rota', function() {
-    return 'rota2';
-})->name('site.rota2');
+Route::get('/teste/{p1}/{p2}', [TesteController::class, 'teste'])->name('teste');
 
 Route::fallback(function() {
     echo '404!!!';
